@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ld42"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="GameWindow" 
+        Height="465" Width="930"
+        MinHeight="465" MinWidth="930"
+        MaxHeight="465" MaxWidth="930"
         
+        Loaded="Window_Loaded"
+        >
+    <Grid Background="White">
+        <!--<Grid x:Name="GameGrid" Background="White" ShowGridLines="true" />-->
+        <Canvas x:Name="GameCanvas" Background="White"/>
     </Grid>
 </Window>

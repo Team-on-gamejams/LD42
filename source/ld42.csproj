@@ -57,7 +57,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Coord.cs" />
+    <Compile Include="CoordReal.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameCell.cs" />
+    <Compile Include="GameMap.cs" />
+    <Compile Include="ICellContent.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Shake.cs" />
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -65,8 +74,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Hero.cs" />
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -96,6 +106,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\floor\1.png" />
+    <Resource Include="Resources\wall\1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
