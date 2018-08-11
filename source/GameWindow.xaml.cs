@@ -26,8 +26,8 @@ namespace ld42 {
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
-			Settings.cellSize.X = GameCanvas.RenderSize.Width / Settings.camSize.X;
-			Settings.cellSize.Y = GameCanvas.RenderSize.Height / Settings.camSize.Y;
+			Settings.cellSize.X = GameCanvas.ActualWidth / Settings.camSize.X;
+			Settings.cellSize.Y = GameCanvas.ActualHeight / Settings.camSize.Y - 17;
 
 			InitGameOutput();
 			InitGameInput();
@@ -36,22 +36,6 @@ namespace ld42 {
 		}
 
 		void InitGameOutput() {
-			/*for (byte i = 0; i < Settings.camSize.x; ++i)
-				GameGrid.ColumnDefinitions.Add(new ColumnDefinition());
-			for (byte i = 0; i < Settings.camSize.y; ++i)
-				GameGrid.RowDefinitions.Add(new RowDefinition());
-			Grid.SetColumnSpan(GameCanvas, Settings.camSize.x);
-			Grid.SetRowSpan(GameCanvas, Settings.camSize.y);
-
-			for (byte x = 0; x < Settings.camSize.x; ++x) {
-				for (byte y = 0; y < Settings.camSize.y; ++y) {
-					Canvas c = new Canvas();
-					GameGrid.Children.Add(c);
-					Grid.SetColumn(c, x);
-					Grid.SetRow(c, y);
-				}
-			}*/
-
 			for (byte x = 0; x < game.gameMap.SizeX; ++x) {
 				for (byte y = 0; y < game.gameMap.SizeY; ++y) {
 					game.gameMap[x, y].image.Width = Settings.cellSize.X;

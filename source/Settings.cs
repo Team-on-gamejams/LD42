@@ -22,12 +22,12 @@ namespace ld42 {
 
 		static public byte tickInterval = 10;
 		static public ulong tick = 0;
-		static public byte ticksForMove = 30;
+		static public byte ticksForMove = 25;
 
 		static public Coord fieldSize = new Coord(50, 20);
 
 		static public Coord camStartPos = new Coord(0, 0);
-		static public Coord camSize = new Coord(31, 15);
+		static public Coord camSize = new Coord(21, 9);
 		static public CoordReal cellSize = new CoordReal();
 	}
 }

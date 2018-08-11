@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:ld42"
         mc:Ignorable="d"
         Title="GameWindow" 
-        Height="465" Width="930"
-        MinHeight="465" MinWidth="930"
-        MaxHeight="465" MaxWidth="930"
-        
+        Height="600" Width="1000"
+        MinHeight="600" MinWidth="1000"
+        MaxHeight="600" MaxWidth="1000"
         Loaded="Window_Loaded"
         >
     <Grid Background="White">
-        <!--<Grid x:Name="GameGrid" Background="White" ShowGridLines="true" />-->
         <Canvas x:Name="GameCanvas" Background="White"/>
     </Grid>
 </Window>

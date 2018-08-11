@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace ld42 {
 	class GameMap : IEnumerable {
-		double camdChange = 1.0 / Settings.tickInterval;
+		double camdChange = 1.0 / Settings.ticksForMove;
 		double camdx, camdy;
 		CoordReal camPos;
 		GameCell[,] map;
@@ -65,7 +65,8 @@ namespace ld42 {
 		}
 
 		public void ProcessCamMove() {
-			Settings.gameWindow.Title = $"{camdChange.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0}";
+			Settings.gameWindow.Title = $"{camdChange.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0} " +
+				$" \n {CamPos.X} \n {CamPos.Y}";
 			if (camdx < 0) {
 				CamPos.X -= camdChange;
 				camdx += camdChange;
