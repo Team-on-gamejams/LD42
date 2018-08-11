@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCA3EA88-4F7C-4F24-A272-1B3D5E2FD8FE}</ProjectGuid>
+    <ProjectGuid>{6662F594-C302-40C6-AE57-02DFC04EF2C8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ld42</RootNamespace>
     <AssemblyName>ld42</AssemblyName>
@@ -48,13 +48,27 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Coord.cs" />
+    <Compile Include="CoordReal.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameCell.cs" />
+    <Compile Include="GameMap.cs" />
+    <Compile Include="Ghost.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Shake.cs" />
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -62,8 +76,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Hero.cs" />
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -85,6 +100,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hero\ghost.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\floor\1.png" />
+    <Resource Include="Resources\wall\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hero\ghostBullet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
