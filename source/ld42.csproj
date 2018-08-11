@@ -48,6 +48,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -62,12 +65,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BasicObstacle.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObstacleJump.cs" />
+    <Compile Include="ObstacleRoll.cs" />
+    <Compile Include="ObstacleSlash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +92,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +102,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\img\icon.png" />
+    <Resource Include="Resources\img\enemyShield.png" />
+    <Resource Include="Resources\img\blockDown.png" />
+    <Resource Include="Resources\img\blockTop.png" />
+    <Resource Include="Resources\img\playerJump.gif" />
+    <Resource Include="Resources\img\playerRoll.gif" />
+    <Resource Include="Resources\img\playerSlash.gif" />
+    <Resource Include="Resources\img\playerMove.gif" />
     <Resource Include="Resources\img\road.png" />
     <Content Include="Resources\music\click.wav" />
     <Content Include="Resources\music\collision.wav" />

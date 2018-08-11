@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:ld42"
         mc:Ignorable="d"
         Title="S.P.A.C.E., inc." 
+        Icon="Resources\img\icon.png"
         Height="320"    Width="500"
         MinHeight="320" MinWidth="500"
         MaxHeight="320" MaxWidth="500"
         Loaded="Window_Loaded"
+        KeyDown="Window_KeyDown"
         >
     <Grid>
         <Canvas x:Name="uiCanvas" Background="DarkGray" Height="50" VerticalAlignment="Top"/>
