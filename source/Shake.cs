@@ -25,43 +25,32 @@ namespace ld42 {
 
 		public void ProcessShake() {
 			if (Settings.tick % Settings.ticksForMove == 0) {
-				if (body.Count > 1) {
-					for (byte i = (byte)(body.Count - 1); i >= 1; --i) {
-						body[i].pos.X = body[i - 1].pos.X;
-						body[i].pos.Y = body[i - 1].pos.Y;
+				for (byte i = (byte)(body.Count - 1); i > 0; --i) {
+					body[i].pos.X = body[i - 1].pos.X;
+					body[i].pos.Y = body[i - 1].pos.Y;
 
-						//if (body[i].dir == Direction.Left) 
-							//--body[i].pos.X;
-						//else if (body[i].dir == Direction.Right) 
-							//++body[i].pos.X;
-						//else if (body[i].dir == Direction.Up) 
-							//--body[i].pos.Y;
-						//else if (body[i].dir == Direction.Down) 
-							//++body[i].pos.Y;
-
-						body[i].dir = body[i - 1].dir;
-					}
+					body[i].dir = body[i - 1].dir;
 				}
 
 				body[0].dir = newDir;
 				if (body[0].dir == Direction.Left) {
 					--body[0].pos.X;
-					//Settings.game.gameMap.MoveCamLeft();
+					Settings.game.gameMap.MoveCamLeft();
 				}
 				else if (body[0].dir == Direction.Right) {
 					++body[0].pos.X;
-					//Settings.game.gameMap.MoveCamRight();
+					Settings.game.gameMap.MoveCamRight();
 				}
 				else if (body[0].dir == Direction.Up) {
 					--body[0].pos.Y;
-					//Settings.game.gameMap.MoveCamUp();
+					Settings.game.gameMap.MoveCamUp();
 				}
 				else if (body[0].dir == Direction.Down) {
 					++body[0].pos.Y;
-					//Settings.game.gameMap.MoveCamDown();
+					Settings.game.gameMap.MoveCamDown();
 				}
 
-				Settings.gameWindow.Title = body[0].pos.ToString();
+				Settings.gameWindow.Title = body[0].pos.ToString() + body[1].pos.ToString();
 			}
 		}
 
@@ -125,6 +114,14 @@ namespace ld42 {
 				if(yChange != 0)
 					Canvas.SetTop(hero.image,  Settings.cellSize.Y * (hero.pos.Y + yChange - Settings.game.gameMap.CamPos.Y));
 			};
+			///*
+			Settings.game.gameMap.CamPos.SizeChanged += (xChange, yChange) => {
+				if (xChange != 0)
+					Canvas.SetLeft(hero.image, Settings.cellSize.X * (hero.pos.X - Settings.game.gameMap.CamPos.X));
+				if (yChange != 0)
+					Canvas.SetTop(hero.image,  Settings.cellSize.Y * (hero.pos.Y  - Settings.game.gameMap.CamPos.Y));
+			};
+			//*/
 		}
 	}
 }

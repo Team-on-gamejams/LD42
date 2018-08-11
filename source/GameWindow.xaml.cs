@@ -32,12 +32,7 @@ namespace ld42 {
 			InitGameOutput();
 			InitGameInput();
 
-			try {
-				game.StartGame();
-			}
-			catch(Exception ex) {
-				MessageBox.Show(ex.Message + '\n' + ex.StackTrace);
-			}
+			game.StartGame();
 		}
 
 		void InitGameOutput() {
