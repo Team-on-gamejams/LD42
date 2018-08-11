@@ -24,6 +24,9 @@ namespace ld42 {
 		}
 
 		public void ProcessShake() {
+			for (int i = 0; i < body.Count; ++i)
+				++body[i].tickOnCell;
+
 			if (Settings.tick % Settings.ticksForMove == 0) {
 				for (byte i = (byte)(body.Count - 1); i > 0; --i) {
 					body[i].pos.X = body[i - 1].pos.X;
@@ -50,7 +53,24 @@ namespace ld42 {
 					Settings.game.gameMap.MoveCamDown();
 				}
 
-				Settings.gameWindow.Title = body[0].pos.ToString() + body[1].pos.ToString();
+				Canvas.SetLeft(body[0].image, Settings.cellSize.X * Settings.snakeStartPos.X);
+				Canvas.SetTop(body[0].image,  Settings.cellSize.Y * Settings.snakeStartPos.Y);
+				for (int i = 1; i < body.Count; ++i) {
+					Canvas.SetLeft(body[i].image, Settings.cellSize.X * (body[i].pos.X - body[0].pos.X + Settings.snakeStartPos.X));
+					Canvas.SetTop(body[i].image,  Settings.cellSize.Y * (body[i].pos.Y - body[0].pos.Y + Settings.snakeStartPos.Y));
+				}
+			}
+		}
+
+		public void FireAt(double x, double y) {
+			foreach (var hero in body) {
+				CoordReal heroPos = new CoordReal {
+					X = Canvas.GetLeft(hero.image) + hero.image.DesiredSize.Width / 2,
+					Y = Canvas.GetTop(hero.image) + hero.image.DesiredSize.Height  / 2,
+				};
+				double angle = Math.Atan2(y - heroPos.Y, x - heroPos.X) - Math.Atan2(0, 1);
+				angle = (angle * 180.0 / 3.14159);
+				hero.Shoot(angle, heroPos);
 			}
 		}
 
@@ -108,20 +128,21 @@ namespace ld42 {
 			Canvas.SetLeft(hero.image, Settings.cellSize.X * (hero.pos.X - Settings.game.gameMap.CamPos.X));
 			Canvas.SetTop(hero.image, Settings.cellSize.Y * (hero.pos.Y - Settings.game.gameMap.CamPos.Y));
 
+			/*
 			hero.pos.Changed += (xChange, yChange) => {
 				if(xChange != 0)
 					Canvas.SetLeft(hero.image, Settings.cellSize.X * (hero.pos.X + xChange - Settings.game.gameMap.CamPos.X));
 				if(yChange != 0)
 					Canvas.SetTop(hero.image,  Settings.cellSize.Y * (hero.pos.Y + yChange - Settings.game.gameMap.CamPos.Y));
 			};
-			///*
+			
 			Settings.game.gameMap.CamPos.SizeChanged += (xChange, yChange) => {
 				if (xChange != 0)
 					Canvas.SetLeft(hero.image, Settings.cellSize.X * (hero.pos.X - Settings.game.gameMap.CamPos.X));
 				if (yChange != 0)
-					Canvas.SetTop(hero.image,  Settings.cellSize.Y * (hero.pos.Y  - Settings.game.gameMap.CamPos.Y));
+					Canvas.SetTop(hero.image, Settings.cellSize.Y * (hero.pos.Y  - Settings.game.gameMap.CamPos.Y));
 			};
-			//*/
+			*/
 		}
 	}
 }

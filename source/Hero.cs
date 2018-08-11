@@ -29,5 +29,7 @@ namespace ld42 {
 			image.Height = Settings.cellSize.Y;
 			pos = new Coord();
 		}
+
+		abstract public Bullet Shoot(double angle, CoordReal shootPos);
 	}
 }

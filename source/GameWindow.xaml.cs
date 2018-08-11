@@ -76,5 +76,10 @@ namespace ld42 {
 					game.snake.MoveDown();
 			};
 		}
+
+		private void GameCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+			//var pos = e.GetPosition(GameCanvas);
+			//game.snake.FireAt(pos.X, pos.Y);
+		}
 	}
 }

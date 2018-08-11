@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bullet.cs" />
     <Compile Include="Coord.cs" />
     <Compile Include="CoordReal.cs" />
     <Compile Include="Direction.cs" />
@@ -114,6 +115,9 @@
   <ItemGroup>
     <Resource Include="Resources\floor\1.png" />
     <Resource Include="Resources\wall\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hero\ghostBullet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,5 +20,9 @@ namespace ld42 {
 			var bi = new BitmapImage(new Uri(Settings.imagePath + @"hero\ghost.gif", UriKind.Relative));
 			ImageBehavior.SetAnimatedSource(image, bi);
 		}
+
+		public override Bullet Shoot(double angle, CoordReal shootPos) {
+			return new Bullet("hero\\ghostBullet", angle, shootPos, 5);
+		}
 	}
 }

@@ -12,6 +12,6 @@
         Loaded="Window_Loaded"
         >
     <Grid>
-        <Canvas x:Name="GameCanvas" Background="Black"/>
+        <Canvas x:Name="GameCanvas" Background="Black" MouseLeftButtonDown="GameCanvas_MouseLeftButtonDown"/>
     </Grid>
 </Window>
