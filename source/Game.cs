@@ -17,11 +17,12 @@ using System.Timers;
 namespace ld42 {
 	class Game {
 		public GameMap gameMap;
-		Snake player;
+		public Snake snake;
 
 		public Game() {
 			gameMap = new GameMap();
-			player = new Snake();
+			snake = new Snake();
+			Settings.game = this;
 		}
 
 		public void StartGame() {
@@ -42,18 +43,30 @@ namespace ld42 {
 		}
 
 		public void Init() {
-			gameMap.GenerateNewMap();
+			System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
+				gameMap.GenerateNewMap();
+				snake.AddHero(new Ghost());
+				snake.AddHero(new Ghost());
+				snake.AddHero(new Ghost());
+				snake.AddHero(new Ghost());
+				snake.AddHero(new Ghost());
+			});
 		}
 
 		public void Loop() {
 			System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
-				Update();
-				Render();
+			//	try {
+					Update();
+					Render();
+			//	}
+			//	catch (Exception ex) {
+					//MessageBox.Show(ex.Message + '\n' + ex.StackTrace);
+			//	}
 			});
 		}
 
 		public void Update() {
-
+			snake.ProcessShake();
 		}
 
 		public void Render() {

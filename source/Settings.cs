@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace ld42 {
 	static class Settings {
 		static public GameWindow gameWindow;
+		static public Game game;
 
 		static public string imagePath = "Resources\\";
 		static public string imageExt = ".png";
@@ -30,5 +31,9 @@ namespace ld42 {
 		static public Coord camStartPos = new Coord(0, 0);
 		static public Coord camSize = new Coord(21, 9);
 		static public CoordReal cellSize = new CoordReal();
+
+		static public Coord snakeStartPos = new Coord((short)Math.Round(camSize.X / 2.0 + camStartPos.X),
+			(short)Math.Round(camSize.Y / 2.0 + camStartPos.Y));
+		static public Direction snakeStartDirection = Direction.Down;
 	}
 }

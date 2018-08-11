@@ -14,20 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfAnimatedGif;
 
-
 namespace ld42 {
-	abstract class Hero {
-		public Coord pos;
-		public Direction dir;
-		public byte tickOnCell;
-
-		public Image image;
-
-		public Hero() {
-			image = new Image();
-			image.Width = Settings.cellSize.X;
-			image.Height = Settings.cellSize.Y;
-			pos = new Coord();
+	class Ghost : Hero {
+		public Ghost() {
+			var bi = new BitmapImage(new Uri(Settings.imagePath + @"hero\ghost.gif", UriKind.Relative));
+			ImageBehavior.SetAnimatedSource(image, bi);
 		}
 	}
 }

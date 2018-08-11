@@ -32,7 +32,12 @@ namespace ld42 {
 			InitGameOutput();
 			InitGameInput();
 
-			game.StartGame();
+			try {
+				game.StartGame();
+			}
+			catch(Exception ex) {
+				MessageBox.Show(ex.Message + '\n' + ex.StackTrace);
+			}
 		}
 
 		void InitGameOutput() {
@@ -43,6 +48,7 @@ namespace ld42 {
 					GameCanvas.Children.Add(game.gameMap[x, y].image);
 					Canvas.SetLeft(game.gameMap[x, y].image, Settings.cellSize.X * (x - game.gameMap.CamPos.X));
 					Canvas.SetTop(game.gameMap[x, y].image, Settings.cellSize.Y * (y - game.gameMap.CamPos.Y));
+					Canvas.SetZIndex(game.gameMap[x, y].image, 1);
 				}
 			}
 
@@ -65,14 +71,14 @@ namespace ld42 {
 
 		void InitGameInput() {
 			KeyDown += (a, b) => {
-				if (b.Key == Key.A)
-					game.gameMap.TryMoveCamLeft();
-				else if (b.Key == Key.W)
-					game.gameMap.TryMoveCamUp();
-				else if (b.Key == Key.D)
-					game.gameMap.TryMoveCamRight();
-				else if (b.Key == Key.S)
-					game.gameMap.TryMoveCamDown();
+				if (b.Key == Key.A || b.Key == Key.Left)
+					game.snake.MoveLeft();
+				else if (b.Key == Key.W || b.Key == Key.Up)
+					game.snake.MoveUp();
+				else if (b.Key == Key.D || b.Key == Key.Right)
+					game.snake.MoveRight();
+				else if (b.Key == Key.S || b.Key == Key.Down)
+					game.snake.MoveDown();
 			};
 		}
 	}
