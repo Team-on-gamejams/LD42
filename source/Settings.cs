@@ -23,6 +23,7 @@ namespace ld42 {
 		static public byte tickInterval = 10;
 		static public ulong tick = 0;
 		static public byte ticksForMove = 25;
+		static public double camSpeed = 1.0 / Settings.ticksForMove;
 
 		static public Coord fieldSize = new Coord(50, 20);
 

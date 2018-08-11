@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 
 namespace ld42 {
 	class GameMap : IEnumerable {
-		double camdChange = 1.0 / Settings.ticksForMove;
 		double camdx, camdy;
 		CoordReal camPos;
 		GameCell[,] map;
@@ -49,39 +48,44 @@ namespace ld42 {
 		public CoordReal CamPos => camPos;
 
 		public void TryMoveCamLeft() {
-			--camdx;
+			if(-0.1 < camdx && camdx < 0.1)
+				--camdx;
 		}
 
 		public void TryMoveCamUp() {
-			--camdy;
+			if (-0.1 < camdy && camdy < 0.1)
+				--camdy;
 		}
 
 		public void TryMoveCamRight() {
-			++camdx;
+			if (-0.1 < camdx && camdx < 0.1)
+				++camdx;
 		}
 
 		public void TryMoveCamDown() {
-			++camdy;
+			if (-0.1 < camdy && camdy < 0.1)
+				++camdy;
 		}
 
 		public void ProcessCamMove() {
-			Settings.gameWindow.Title = $"{camdChange.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0} " +
+			Settings.gameWindow.Title = $"{Settings.camSpeed.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0} " +
 				$" \n {CamPos.X} \n {CamPos.Y}";
-			if (camdx < 0) {
-				CamPos.X -= camdChange;
-				camdx += camdChange;
+
+			if (camdx <= -0.1) {
+				CamPos.X -= Settings.camSpeed;
+				camdx += Settings.camSpeed;
 			}
-			else if (camdx > 0) {
-				CamPos.X += camdChange;
-				camdx -= camdChange;
+			else if (camdx >= 0.1) {
+				CamPos.X += Settings.camSpeed;
+				camdx -= Settings.camSpeed;
 			}
-			else if (camdy < 0) {
-				CamPos.Y -= camdChange;
-				camdy += camdChange;
+			else if (camdy <= -0.1) {
+				CamPos.Y -= Settings.camSpeed;
+				camdy += Settings.camSpeed;
 			}
-			else if (camdy > 0) {
-				CamPos.Y += camdChange;
-				camdy -= camdChange;
+			else if (camdy >= 0.1) {
+				CamPos.Y += Settings.camSpeed;
+				camdy -= Settings.camSpeed;
 			}
 		}
 
