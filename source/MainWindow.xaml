@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ld42"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="S.P.A.C.E., inc." 
+        Height="320"    Width="500"
+        MinHeight="320" MinWidth="500"
+        MaxHeight="320" MaxWidth="500"
+        Loaded="Window_Loaded"
+        >
     <Grid>
-        
-    </Grid>
+        <Canvas x:Name="uiCanvas" Background="DarkGray" Height="50" VerticalAlignment="Top"/>
+        <Canvas x:Name="gameCanvas" Background="Gray" Height="250" VerticalAlignment="Bottom"/>
+    </Grid> 
 </Window>
