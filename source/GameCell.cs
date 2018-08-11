@@ -18,8 +18,6 @@ namespace ld42 {
 		public bool isWall;
 		public Image image;
 
-		public ICellContent cellContent;
-
 		public GameCell() {
 			image = new Image();
 		}

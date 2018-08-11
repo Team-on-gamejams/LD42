@@ -59,11 +59,11 @@
     </ApplicationDefinition>
     <Compile Include="Coord.cs" />
     <Compile Include="CoordReal.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameCell.cs" />
     <Compile Include="GameMap.cs" />
-    <Compile Include="ICellContent.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Shake.cs" />
     <Page Include="GameWindow.xaml">

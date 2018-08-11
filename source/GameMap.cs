@@ -48,28 +48,27 @@ namespace ld42 {
 		public CoordReal CamPos => camPos;
 
 		public void TryMoveCamLeft() {
-			if(-0.1 < camdx && camdx < 0.1)
+			if(-0.1 < camdx && camdx < 0.1 && CamPos.X >= 0.1)
 				--camdx;
 		}
 
 		public void TryMoveCamUp() {
-			if (-0.1 < camdy && camdy < 0.1)
+			if (-0.1 < camdy && camdy < 0.1 && CamPos.Y >= 0.1)
 				--camdy;
 		}
 
 		public void TryMoveCamRight() {
-			if (-0.1 < camdx && camdx < 0.1)
+			if (-0.1 < camdx && camdx < 0.1 && CamPos.X + Settings.camSize.X <= Settings.fieldSize.X - 1)
 				++camdx;
 		}
 
 		public void TryMoveCamDown() {
-			if (-0.1 < camdy && camdy < 0.1)
+			if (-0.1 < camdy && camdy < 0.1 && CamPos.Y + Settings.camSize.Y <= Settings.fieldSize.Y - 1)
 				++camdy;
 		}
 
 		public void ProcessCamMove() {
-			Settings.gameWindow.Title = $"{Settings.camSpeed.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0} " +
-				$" \n {CamPos.X} \n {CamPos.Y}";
+			Settings.gameWindow.Title = $"{Settings.camSpeed.ToString()} \n {camdx} \n {camdy} \n {CamPos.X} \n {CamPos.Y}";
 
 			if (camdx <= -0.1) {
 				CamPos.X -= Settings.camSpeed;

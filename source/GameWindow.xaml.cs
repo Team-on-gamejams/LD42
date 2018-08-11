@@ -27,7 +27,7 @@ namespace ld42 {
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 			Settings.cellSize.X = GameCanvas.ActualWidth / Settings.camSize.X;
-			Settings.cellSize.Y = GameCanvas.ActualHeight / Settings.camSize.Y - 17;
+			Settings.cellSize.Y = GameCanvas.ActualHeight / Settings.camSize.Y;
 
 			InitGameOutput();
 			InitGameInput();
