@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace ld42 {
 	static class Settings {
+		static public GameWindow gameWindow;
+
 		static public string imagePath = "Resources\\";
 		static public string imageExt = ".png";
 

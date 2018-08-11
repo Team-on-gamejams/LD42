@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 
 namespace ld42 {
 	class GameMap : IEnumerable {
-		Coord camPos;
+		double camdChange = 1.0 / Settings.tickInterval;
+		double camdx, camdy;
+		CoordReal camPos;
 		GameCell[,] map;
 
 		public GameMap() {
@@ -24,7 +26,7 @@ namespace ld42 {
 			for (byte x = 0; x < map.GetLength(0); ++x)
 				for (byte y = 0; y < map.GetLength(1); ++y)
 					map[x, y] = new GameCell();
-			camPos = new Coord(Settings.camStartPos);
+			camPos = new CoordReal(Settings.camStartPos);
 		}
 
 		public void GenerateNewMap() {
@@ -44,22 +46,42 @@ namespace ld42 {
 		}
 
 		//------------------------------------------- CAMERA ------------------------------------------
-		public Coord CamPos => camPos;
+		public CoordReal CamPos => camPos;
 
 		public void TryMoveCamLeft() {
-			--CamPos.X;
+			--camdx;
 		}
 
 		public void TryMoveCamUp() {
-			--CamPos.Y;
+			--camdy;
 		}
 
 		public void TryMoveCamRight() {
-			++CamPos.X;
+			++camdx;
 		}
 
 		public void TryMoveCamDown() {
-			++CamPos.Y;
+			++camdy;
+		}
+
+		public void ProcessCamMove() {
+			Settings.gameWindow.Title = $"{camdChange.ToString()} \n {camdx} \n {camdy} \n {camdx != 0} \n {camdy != 0}";
+			if (camdx < 0) {
+				CamPos.X -= camdChange;
+				camdx += camdChange;
+			}
+			else if (camdx > 0) {
+				CamPos.X += camdChange;
+				camdx -= camdChange;
+			}
+			else if (camdy < 0) {
+				CamPos.Y -= camdChange;
+				camdy += camdChange;
+			}
+			else if (camdy > 0) {
+				CamPos.Y += camdChange;
+				camdy -= camdChange;
+			}
 		}
 
 		//------------------------------------------- ULT ------------------------------------------

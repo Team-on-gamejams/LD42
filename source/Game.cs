@@ -46,8 +46,10 @@ namespace ld42 {
 		}
 
 		public void Loop() {
-			Update();
-			Render();
+			System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
+				Update();
+				Render();
+			});
 		}
 
 		public void Update() {
@@ -55,7 +57,7 @@ namespace ld42 {
 		}
 
 		public void Render() {
-
+			gameMap.ProcessCamMove();
 		}
 
 

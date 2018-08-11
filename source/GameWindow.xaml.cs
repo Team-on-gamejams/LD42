@@ -17,11 +17,12 @@ namespace ld42 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window {
+	public partial class GameWindow : Window {
 		Game game = new Game();
 
-		public MainWindow() {
+		public GameWindow() {
 			InitializeComponent();
+			Settings.gameWindow = this;
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
