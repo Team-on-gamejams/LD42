@@ -63,6 +63,7 @@
     <Compile Include="HightscoresWindow.xaml.cs">
       <DependentUpon>HightscoresWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sound.cs" />
     <Compile Include="WindowManager.cs" />
     <Page Include="GameOverWindow.xaml">
       <SubType>Designer</SubType>
@@ -138,18 +139,40 @@
     <Resource Include="Resources\img\menuBackground.png" />
     <Resource Include="Resources\img\hightscoresBackground.png" />
     <Resource Include="Resources\img\gameoverBackground.png" />
-    <Content Include="Resources\music\click.wav" />
-    <Content Include="Resources\music\collision.wav" />
-    <Content Include="Resources\music\error.wav" />
-    <Content Include="Resources\music\fall.wav" />
-    <Content Include="Resources\music\foundSpesial.wav" />
-    <Content Include="Resources\music\jump.wav" />
-    <Content Include="Resources\music\lift.wav" />
-    <Content Include="Resources\music\lift2.wav" />
-    <Content Include="Resources\music\roll.wav" />
-    <Content Include="Resources\music\slash2.wav" />
-    <Content Include="Resources\music\steps.wav" />
-    <Content Include="Resources\music\teleport.wav" />
+    <Content Include="Resources\music\click.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\collision.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\error.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\fall.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\foundSpesial.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\jump.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\lift.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\lift2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\roll.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\slash.wav" />
+    <Content Include="Resources\music\steps.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\music\teleport.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

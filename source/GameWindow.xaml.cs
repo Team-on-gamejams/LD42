@@ -111,6 +111,7 @@ namespace ld42 {
 				});
 			};
 			timer = t;
+
 			t.Start();
 		}
 
@@ -157,6 +158,7 @@ namespace ld42 {
 			if(obstacles[2] != null) {
 				if (playerState != obstacles[2].stateToAvoid) {
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerFall.gif", UriKind.Relative)));
+					Sound.Fall();
 					timer.Stop();
 					Timer gameoverTimer = new Timer() {
 						AutoReset = false,
@@ -203,16 +205,21 @@ namespace ld42 {
 		private void Window_KeyDown(object sender, KeyEventArgs e) {
 			if (timer.Enabled) {
 				if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
+					Sound.Slash();
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerSlash.gif", UriKind.Relative)));
 					playerState = PlayerState.Slash;
 					stateRemaing = 50 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.W || e.Key == Key.Up) /*&& playerState != PlayerState.Jump*/) {
+					if(playerState != PlayerState.Jump)
+						Sound.Jump();
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerJump.gif", UriKind.Relative)));
 					playerState = PlayerState.Jump;
 					stateRemaing = 150 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.S || e.Key == Key.Down) /*&& playerState != PlayerState.Roll*/) {
+					if(playerState != PlayerState.Roll)
+						Sound.Roll();
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerRoll.gif", UriKind.Relative)));
 					playerState = PlayerState.Roll;
 					stateRemaing = 150 / speedArr[speedArrIndex];

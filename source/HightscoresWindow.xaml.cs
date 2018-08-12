@@ -27,6 +27,7 @@ namespace ld42 {
 		}
 
 		private void Button_Back(object sender, RoutedEventArgs e) {
+			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 		}
 	}

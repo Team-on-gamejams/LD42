@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace ld42 {
 	/// <summary>
@@ -29,15 +30,18 @@ namespace ld42 {
 		}
 
 		public void Button_Play(object sender, RoutedEventArgs e) {
+			Sound.Click();
 			gameWindow = new GameWindow();
 			this.ReopenWindow(gameWindow);
 		}
 
 		private void Button_Hightscores(object sender, RoutedEventArgs e) {
+			Sound.Click();
 			this.ReopenWindow(hightscoresWindow);
 		}
 
 		private void Button_Exit(object sender, RoutedEventArgs e) {
+			//Sound.Click();
 			this.Close();
 		}
 

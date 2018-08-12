@@ -27,11 +27,13 @@ namespace ld42 {
 		}
 
 		private void Button_Play(object sender, EventArgs e) {
+			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.gameWindow);
 			MenuWindow.menuWindow.Button_Play(null, null);
 		}
 
 		private void Button_Menu(object sender, EventArgs e) {
+			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 		}
 	}
