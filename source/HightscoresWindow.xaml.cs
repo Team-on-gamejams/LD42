@@ -34,6 +34,20 @@ namespace ld42 {
 		private void Window_Activated(object sender, EventArgs e) {
 			nickPanel.Children.Clear();
 			scorePanel.Children.Clear();
+
+			string[] lines = System.IO.File.ReadAllLines(@".\score");
+			List<Tuple<string, ulong>> scores = new List<Tuple<string, ulong>>(lines.Length);
+			foreach (var l in lines) {
+				var tmp = l.Split('|');
+				scores.Add(new Tuple<string, ulong>(tmp[0], ulong.Parse(tmp[1])));
+			}
+
+			scores.Sort((a, b) => (int)(b.Item2 - a.Item2));
+
+			foreach (var s in scores) {
+				nickPanel.Children.Add(new TextBlock() { Text = s.Item1, Style = (Style)FindResource("hightscoresTextNick") });
+				scorePanel.Children.Add(new TextBlock() { Text = s.Item2.ToString(), Style = (Style)FindResource("hightscoresTextNick") });
+			}
 		}
 	}
 }

@@ -21,6 +21,7 @@
         <TextBlock Text="You lose" Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
         <TextBlock Text="Score:" x:Name="ScoreText"   Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
         <StackPanel Margin="0 35 0 0">
+            <TextBox  Text="Player" x:Name="nick"   HorizontalContentAlignment="Center"    FontSize="32" Width="220" FontFamily="{StaticResource PixelFont}" />
             <Button  Content="Play again"   Click="Button_Play"         Style="{StaticResource menuBtn}"/>
             <Button  Content="Menu"         Click="Button_Menu"  Style="{StaticResource menuBtn}"/>
         </StackPanel>

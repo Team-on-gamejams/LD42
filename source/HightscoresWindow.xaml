@@ -20,13 +20,13 @@
         
         <TextBlock Text="Hightscores:" Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
         <Button    Content="Back" Click="Button_Back" DockPanel.Dock="Bottom" FontFamily="{StaticResource PixelFont}" FontSize="20" HorizontalAlignment="Right" Width="100"/>
-        <StackPanel Margin="10" DockPanel.Dock="Left" x:Name="nickPanel">
+        <StackPanel Margin="10" DockPanel.Dock="Left" x:Name="nickPanel" HorizontalAlignment="Right">
             <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Team-on"/>
             <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Player"/>
             <TextBlock Style="{StaticResource hightscoresTextNick}" Text="One more player"/>
             <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Very long nickname player"/>
         </StackPanel>
-        <StackPanel Margin="10" DockPanel.Dock="Left" x:Name="scorePanel">
+        <StackPanel Margin="10" HorizontalAlignment="Left" DockPanel.Dock="Left" x:Name="scorePanel">
             <TextBlock Style="{StaticResource hightscoresTextScore}" Text="1234567890"/>
             <TextBlock Style="{StaticResource hightscoresTextScore}" Text="234662"/>
             <TextBlock Style="{StaticResource hightscoresTextScore}" Text="125"/>

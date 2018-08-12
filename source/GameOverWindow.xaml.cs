@@ -30,11 +30,17 @@ namespace ld42 {
 			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 			MenuWindow.menuWindow.Button_Play(null, null);
+			SaveScore();
 		}
 
 		private void Button_Menu(object sender, EventArgs e) {
 			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
+			SaveScore();
+		}
+
+		void SaveScore() {
+			System.IO.File.AppendAllText(@".\score", nick.Text + '|' + MenuWindow.gameWindow.score.ToString() + '\n');
 		}
 
 		private void Window_Activated(object sender, EventArgs e) {
