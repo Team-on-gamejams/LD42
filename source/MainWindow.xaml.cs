@@ -149,6 +149,20 @@ namespace ld42 {
 				obstacles.RemoveAt(0);
 				AddRandomObstacle();
 			}
+
+			if(obstacles[2] != null) {
+				if (playerState != obstacles[2].stateToAvoid) {
+					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerFall.gif", UriKind.Relative)));
+					Title = "Lose!";
+				}
+			}
+			if (obstacles[3] != null) {
+				if (obstacles[3].stateToAvoid == PlayerState.Slash && playerState == PlayerState.Slash) {
+					obstacles[3].Destroy();
+					obstacles[3] = null;
+				}
+			}
+
 		}
 
 		void AddRandomObstacle() {

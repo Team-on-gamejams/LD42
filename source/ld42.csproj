@@ -112,6 +112,7 @@
     <Resource Include="Resources\img\playerSlash.gif" />
     <Resource Include="Resources\img\playerMove.gif" />
     <Resource Include="Resources\img\road.png" />
+    <Resource Include="Resources\img\playerFall.gif" />
     <Content Include="Resources\music\click.wav" />
     <Content Include="Resources\music\collision.wav" />
     <Content Include="Resources\music\error.wav" />
