@@ -36,5 +36,5 @@ https://ldjam.com/events/ludum-dare/42/s-p-a-c-e-inc
  * [WpfAnimatedGif](https://github.com/XamlAnimatedGif/WpfAnimatedGif)
  
 #### SCREENSHOTS
-![](readme/img1.jpg) 
-![](readme/img2.jpg) 
+![](readme/img1.png) 
+![](readme/img2.png) 
