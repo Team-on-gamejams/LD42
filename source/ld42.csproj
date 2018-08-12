@@ -137,6 +137,7 @@
     <Resource Include="Resources\img\playerFall.gif" />
     <Resource Include="Resources\img\menuBackground.png" />
     <Resource Include="Resources\img\hightscoresBackground.png" />
+    <Resource Include="Resources\img\gameoverBackground.png" />
     <Content Include="Resources\music\click.wav" />
     <Content Include="Resources\music\collision.wav" />
     <Content Include="Resources\music\error.wav" />

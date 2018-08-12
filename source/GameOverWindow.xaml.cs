@@ -25,5 +25,14 @@ namespace ld42 {
 		private void WindowClosed(object sender, EventArgs e) {
 			WindowManager.CloseAll();
 		}
+
+		private void Button_Play(object sender, EventArgs e) {
+			WindowManager.ReopenWindow(this, MenuWindow.gameWindow);
+			MenuWindow.menuWindow.Button_Play(null, null);
+		}
+
+		private void Button_Menu(object sender, EventArgs e) {
+			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
+		}
 	}
 }

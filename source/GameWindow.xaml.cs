@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
 
 using WpfAnimatedGif;
 
@@ -23,6 +24,8 @@ namespace ld42 {
 	/// </summary>
 	public partial class GameWindow : Window {
 		Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
+
+		System.Timers.Timer timer;
 		byte speedArrIndex = 0;
 		byte[] speedArr = new byte[] { /*1, 2,*/ 5, 10, 25, 50 };
 		ulong tick = 0;
@@ -91,7 +94,7 @@ namespace ld42 {
 					++tick;
 					if (tick % 10 == 0) {
 						++score;
-						if (tick % 10000 == 0 && speedArrIndex < speedArr.Length - 1)
+						if (tick % 5000 == 0 && speedArrIndex < speedArr.Length - 1)
 							++speedArrIndex;
 					}
 
@@ -107,7 +110,7 @@ namespace ld42 {
 					//}
 				});
 			};
-
+			timer = t;
 			t.Start();
 		}
 
@@ -154,7 +157,22 @@ namespace ld42 {
 			if(obstacles[2] != null) {
 				if (playerState != obstacles[2].stateToAvoid) {
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerFall.gif", UriKind.Relative)));
-					Title = "Lose!";
+					timer.Stop();
+					Timer gameoverTimer = new Timer() {
+						AutoReset = false,
+						Interval = 500,
+						Enabled = false,
+					};
+					gameoverTimer.Elapsed += (a, b) => {
+						System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
+							WindowManager.ReopenWindow(this, MenuWindow.gameOverWindow);
+						});
+					};
+					gameoverTimer.Start();
+				}
+				else if(obstacles[2].stateToAvoid == PlayerState.Slash) {
+					obstacles[2].Destroy();
+					obstacles[2] = null;
 				}
 			}
 			if (obstacles[3] != null) {
@@ -183,20 +201,22 @@ namespace ld42 {
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e) {
-			if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
-				ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerSlash.gif", UriKind.Relative)));
-				playerState = PlayerState.Slash;
-				stateRemaing = 50 / speedArr[speedArrIndex];
-			}
-			else if ((e.Key == Key.W || e.Key == Key.Up) /*&& playerState != PlayerState.Jump*/) {
-				ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerJump.gif", UriKind.Relative)));
-				playerState = PlayerState.Jump;
-				stateRemaing = 150 / speedArr[speedArrIndex];
-			}
-			else if ((e.Key == Key.S || e.Key == Key.Down) /*&& playerState != PlayerState.Roll*/) {
-				ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerRoll.gif", UriKind.Relative)));
-				playerState = PlayerState.Roll;
-				stateRemaing = 150 / speedArr[speedArrIndex];
+			if (timer.Enabled) {
+				if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
+					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerSlash.gif", UriKind.Relative)));
+					playerState = PlayerState.Slash;
+					stateRemaing = 50 / speedArr[speedArrIndex];
+				}
+				else if ((e.Key == Key.W || e.Key == Key.Up) /*&& playerState != PlayerState.Jump*/) {
+					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerJump.gif", UriKind.Relative)));
+					playerState = PlayerState.Jump;
+					stateRemaing = 150 / speedArr[speedArrIndex];
+				}
+				else if ((e.Key == Key.S || e.Key == Key.Down) /*&& playerState != PlayerState.Roll*/) {
+					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerRoll.gif", UriKind.Relative)));
+					playerState = PlayerState.Roll;
+					stateRemaing = 150 / speedArr[speedArrIndex];
+				}
 			}
 		}
 

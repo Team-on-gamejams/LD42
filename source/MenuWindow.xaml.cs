@@ -18,7 +18,8 @@ namespace ld42 {
 	/// </summary>
 	public partial class MenuWindow : Window {
 		static public MenuWindow menuWindow;
-		static public GameWindow gameWindow = new GameWindow();
+		static public GameOverWindow gameOverWindow = new GameOverWindow();
+		static public GameWindow gameWindow;
 		static public HightscoresWindow hightscoresWindow = new HightscoresWindow();
 
 		public MenuWindow() {
@@ -27,7 +28,8 @@ namespace ld42 {
 			menuWindow = this;
 		}
 
-		private void Button_Play(object sender, RoutedEventArgs e) {
+		public void Button_Play(object sender, RoutedEventArgs e) {
+			gameWindow = new GameWindow();
 			this.ReopenWindow(gameWindow);
 		}
 
