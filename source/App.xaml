@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ld42"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="PixelFont">pack://application:,,,/Resources/fonts/#Visitor TT1 BRK</FontFamily>
     </Application.Resources>
 </Application>

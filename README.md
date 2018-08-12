@@ -13,9 +13,9 @@ Run as long as you can
 
 
 #### HOW TO PLAY 
-*Space* - attack
-*W* - jump
-*S* - roll
+ * *Space* - attack
+ * *W* - jump
+ * *S* - roll
 
 
 ### OTHER

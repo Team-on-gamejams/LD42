@@ -14,7 +14,10 @@
         KeyDown="Window_KeyDown"
         >
     <Grid>
-        <Canvas x:Name="uiCanvas" Background="DarkGray" Height="50" VerticalAlignment="Top"/>
+        <Canvas x:Name="uiCanvas" Background="DarkGray" Height="50" VerticalAlignment="Top">
+            <TextBlock Text="Score:" FontSize="32" FontFamily="{StaticResource PixelFont}" Canvas.Left="10" Canvas.Top="6"/>
+            <TextBlock Text="1234567890" x:Name="scoreText" FontSize="32" FontFamily="{StaticResource PixelFont}" Canvas.Left="120" Canvas.Top="6"/>
+        </Canvas>
         <Canvas x:Name="gameCanvas" Background="Gray" Height="250" VerticalAlignment="Bottom"/>
     </Grid> 
 </Window>

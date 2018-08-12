@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ld42 {
 	class ObstacleSlash : BasicObstacle {
-		public ObstacleSlash() : base(@"Resources\img\enemyShield.png", PlayerState.Slash) {
+		public ObstacleSlash(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\enemyShield.png", PlayerState.Slash, canvas) {
 
 		}
 	}

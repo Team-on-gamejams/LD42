@@ -15,12 +15,20 @@ using System.Windows.Shapes;
 
 namespace ld42 {
 	abstract class BasicObstacle {
-		Image image;
-		PlayerState stateToAvoid;
+		public Image image;
+		public PlayerState stateToAvoid;
+		Canvas canvas;
 
-		protected BasicObstacle(string imgPath, PlayerState stateToAvoid) {
+		protected BasicObstacle(string imgPath, PlayerState stateToAvoid, Canvas canvas) {
 			this.image = new Image() { Source = new BitmapImage(new Uri(imgPath, UriKind.Relative)) };
 			this.stateToAvoid = stateToAvoid;
+			this.canvas = canvas;
+			Canvas.SetTop(image, 50);
+			canvas.Children.Add(image);
+		}
+
+		public void Destroy() {
+			canvas.Children.Remove(image);
 		}
 	}
 }
