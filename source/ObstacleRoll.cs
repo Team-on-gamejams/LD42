@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ld42 {
 	class ObstacleRoll : BasicObstacle {
-		public ObstacleRoll(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\blockTop.png", PlayerState.Roll, canvas) {
+		public ObstacleRoll(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\blockTop.gif", PlayerState.Roll, canvas) {
 
 		}
 	}

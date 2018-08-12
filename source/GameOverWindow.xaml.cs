@@ -36,5 +36,9 @@ namespace ld42 {
 			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 		}
+
+		private void Window_Activated(object sender, EventArgs e) {
+			this.ScoreText.Text = $"Score: {MenuWindow.gameWindow.score}";
+		}
 	}
 }

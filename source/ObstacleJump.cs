@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ld42 {
 	class ObstacleJump : BasicObstacle {
-		public ObstacleJump(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\blockDown.png", PlayerState.Jump, canvas) {
+		public ObstacleJump(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\blockDown.gif", PlayerState.Jump, canvas) {
 
 		}
 	}

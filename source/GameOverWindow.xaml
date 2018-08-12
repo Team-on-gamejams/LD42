@@ -11,6 +11,7 @@
         MinHeight="320" MinWidth="500"
         MaxHeight="320" MaxWidth="500"
         Closed="WindowClosed"
+        Activated="Window_Activated"
         >
     <DockPanel>
         <DockPanel.Background>
@@ -18,7 +19,7 @@
         </DockPanel.Background>
 
         <TextBlock Text="You lose" Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
-        <TextBlock Text="Score:"   Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
+        <TextBlock Text="Score:" x:Name="ScoreText"   Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
         <StackPanel Margin="0 35 0 0">
             <Button  Content="Play again"   Click="Button_Play"         Style="{StaticResource menuBtn}"/>
             <Button  Content="Menu"         Click="Button_Menu"  Style="{StaticResource menuBtn}"/>

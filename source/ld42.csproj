@@ -127,9 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\img\icon.png" />
-    <Resource Include="Resources\img\enemyShield.png" />
-    <Resource Include="Resources\img\blockDown.png" />
-    <Resource Include="Resources\img\blockTop.png" />
     <Resource Include="Resources\img\playerJump.gif" />
     <Resource Include="Resources\img\playerRoll.gif" />
     <Resource Include="Resources\img\playerSlash.gif" />
@@ -139,6 +136,9 @@
     <Resource Include="Resources\img\menuBackground.png" />
     <Resource Include="Resources\img\hightscoresBackground.png" />
     <Resource Include="Resources\img\gameoverBackground.png" />
+    <Resource Include="Resources\img\blockDown.gif" />
+    <Resource Include="Resources\img\blockTop.gif" />
+    <Resource Include="Resources\img\enemyShield.gif" />
     <Content Include="Resources\music\click.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -33,7 +33,7 @@ namespace ld42 {
 		Image backgroundImage2;
 		Image playerImage;
 
-		ulong score;
+		public ulong score;
 
 		int stateRemaing;
 		PlayerState playerState = PlayerState.Move;
@@ -50,6 +50,8 @@ namespace ld42 {
 			Canvas.SetLeft(backgroundImage1, 0);
 			Canvas.SetZIndex(backgroundImage1, 0);
 			backgroundImage2 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\road.png", UriKind.Relative)) };
+			backgroundImage2.RenderTransformOrigin = new Point(0.5, 0.5);
+			backgroundImage2.RenderTransform = new ScaleTransform(-1, 1);
 			gameCanvas.Children.Add(backgroundImage2);
 			Canvas.SetLeft(backgroundImage2, 1000);
 			Canvas.SetZIndex(backgroundImage2, 0);
@@ -148,8 +150,8 @@ namespace ld42 {
 		void ProcessObstacles() {
 			if (tick % ((ulong)(50 / speedArr[speedArrIndex])) == 0) {
 				if (obstacles[0] != null) {
-					score += (ulong)(speedArr[speedArrIndex]);
 					obstacles[0].Destroy();
+					score += (ulong)(speedArr[speedArrIndex]);
 				}
 				obstacles.RemoveAt(0);
 				AddRandomObstacle();
@@ -175,12 +177,14 @@ namespace ld42 {
 				else if(obstacles[2].stateToAvoid == PlayerState.Slash) {
 					obstacles[2].Destroy();
 					obstacles[2] = null;
+					score += (ulong)(speedArr[speedArrIndex]);
 				}
 			}
 			if (obstacles[3] != null) {
 				if (obstacles[3].stateToAvoid == PlayerState.Slash && playerState == PlayerState.Slash) {
 					obstacles[3].Destroy();
 					obstacles[3] = null;
+					score += (ulong)(speedArr[speedArrIndex]);
 				}
 			}
 

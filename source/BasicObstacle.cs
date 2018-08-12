@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace ld42 {
 	abstract class BasicObstacle {
@@ -20,7 +21,8 @@ namespace ld42 {
 		Canvas canvas;
 
 		protected BasicObstacle(string imgPath, PlayerState stateToAvoid, Canvas canvas) {
-			this.image = new Image() { Source = new BitmapImage(new Uri(imgPath, UriKind.Relative)) };
+			this.image = new Image();
+			ImageBehavior.SetAnimatedSource(image, new BitmapImage(new Uri(imgPath, UriKind.Relative)));
 			this.stateToAvoid = stateToAvoid;
 			this.canvas = canvas;
 			Canvas.SetTop(image, 50);
