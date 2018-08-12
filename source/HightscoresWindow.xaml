@@ -1,0 +1,35 @@
+﻿<Window x:Class="ld42.HightscoresWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ld42"
+        mc:Ignorable="d"
+        Title="S.P.A.C.E., inc." 
+        Icon="Resources\img\icon.png"
+        Height="320"    Width="500"
+        MinHeight="320" MinWidth="500"
+        MaxHeight="320" MaxWidth="500"
+        Closed="WindowClosed"
+        >
+    <DockPanel>
+        <DockPanel.Background>
+            <ImageBrush ImageSource="Resources\img\hightscoresBackground.png"/>
+        </DockPanel.Background>
+        
+        <TextBlock Text="Hightscores:" Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
+        <Button    Content="Back" Click="Button_Back" DockPanel.Dock="Bottom" FontFamily="{StaticResource PixelFont}" FontSize="20" HorizontalAlignment="Right" Width="100"/>
+        <StackPanel Margin="10" DockPanel.Dock="Left">
+            <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Team-on"/>
+            <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Player"/>
+            <TextBlock Style="{StaticResource hightscoresTextNick}" Text="One more player"/>
+            <TextBlock Style="{StaticResource hightscoresTextNick}" Text="Very long nickname player"/>
+        </StackPanel>
+        <StackPanel Margin="10" DockPanel.Dock="Left">
+            <TextBlock Style="{StaticResource hightscoresTextScore}" Text="1234567890"/>
+            <TextBlock Style="{StaticResource hightscoresTextScore}" Text="234662"/>
+            <TextBlock Style="{StaticResource hightscoresTextScore}" Text="125"/>
+            <TextBlock Style="{StaticResource hightscoresTextScore}" Text="3426"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

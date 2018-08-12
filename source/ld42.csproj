@@ -57,7 +57,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="GameOverWindow.xaml.cs">
+      <DependentUpon>GameOverWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HightscoresWindow.xaml.cs">
+      <DependentUpon>HightscoresWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowManager.cs" />
+    <Page Include="GameOverWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -66,12 +77,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BasicObstacle.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="HightscoresWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ObstacleJump.cs" />
     <Compile Include="ObstacleRoll.cs" />
     <Compile Include="ObstacleSlash.cs" />
@@ -113,6 +135,8 @@
     <Resource Include="Resources\img\playerMove.gif" />
     <Resource Include="Resources\img\road.png" />
     <Resource Include="Resources\img\playerFall.gif" />
+    <Resource Include="Resources\img\menuBackground.png" />
+    <Resource Include="Resources\img\hightscoresBackground.png" />
     <Content Include="Resources\music\click.wav" />
     <Content Include="Resources\music\collision.wav" />
     <Content Include="Resources\music\error.wav" />

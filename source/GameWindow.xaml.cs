@@ -21,7 +21,7 @@ namespace ld42 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window {
+	public partial class GameWindow : Window {
 		Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
 		byte speedArrIndex = 0;
 		byte[] speedArr = new byte[] { /*1, 2,*/ 5, 10, 25, 50 };
@@ -37,9 +37,10 @@ namespace ld42 {
 
 		List<BasicObstacle> obstacles = new List<BasicObstacle>(20);
 
-		public MainWindow() {
+		public GameWindow() {
 			//try {
 			InitializeComponent();
+			WindowManager.AddWindow(this);
 
 			backgroundImage1 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\road.png", UriKind.Relative)) };
 			gameCanvas.Children.Add(backgroundImage1);
@@ -197,6 +198,10 @@ namespace ld42 {
 				playerState = PlayerState.Roll;
 				stateRemaing = 150 / speedArr[speedArrIndex];
 			}
+		}
+
+		private void WindowClosed(object sender, EventArgs e) {
+			WindowManager.CloseAll();
 		}
 	}
 }
