@@ -139,6 +139,7 @@
     <Resource Include="Resources\img\blockDown.gif" />
     <Resource Include="Resources\img\blockTop.gif" />
     <Resource Include="Resources\img\enemyShield.gif" />
+    <Resource Include="Resources\img\roadOld.png" />
     <Content Include="Resources\music\click.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

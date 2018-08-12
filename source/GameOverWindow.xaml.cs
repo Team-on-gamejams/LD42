@@ -28,7 +28,7 @@ namespace ld42 {
 
 		private void Button_Play(object sender, EventArgs e) {
 			Sound.Click();
-			WindowManager.ReopenWindow(this, MenuWindow.gameWindow);
+			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 			MenuWindow.menuWindow.Button_Play(null, null);
 		}
 

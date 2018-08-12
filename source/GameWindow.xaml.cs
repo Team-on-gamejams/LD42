@@ -45,11 +45,11 @@ namespace ld42 {
 			InitializeComponent();
 			WindowManager.AddWindow(this);
 
-			backgroundImage1 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\road.png", UriKind.Relative)) };
+			backgroundImage1 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\roadOld.png", UriKind.Relative)) };
 			gameCanvas.Children.Add(backgroundImage1);
 			Canvas.SetLeft(backgroundImage1, 0);
 			Canvas.SetZIndex(backgroundImage1, 0);
-			backgroundImage2 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\road.png", UriKind.Relative)) };
+			backgroundImage2 = new Image() { Source = new BitmapImage(new Uri(@"Resources\img\roadOld.png", UriKind.Relative)) };
 			backgroundImage2.RenderTransformOrigin = new Point(0.5, 0.5);
 			backgroundImage2.RenderTransform = new ScaleTransform(-1, 1);
 			gameCanvas.Children.Add(backgroundImage2);
@@ -96,7 +96,7 @@ namespace ld42 {
 					++tick;
 					if (tick % 10 == 0) {
 						++score;
-						if (tick % 5000 == 0 && speedArrIndex < speedArr.Length - 1)
+						if (tick % 2500 == 0 && speedArrIndex < speedArr.Length - 1)
 							++speedArrIndex;
 					}
 
@@ -139,7 +139,7 @@ namespace ld42 {
 		void ProcessPlayerState() {
 			if (playerState != PlayerState.Move) {
 				if (stateRemaing == 0) {
-					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerMove.gif", UriKind.Relative)));
+					ChangePlayerImage(@"Resources\img\playerMove.gif");
 					playerState = PlayerState.Move;
 				}
 				else
@@ -159,12 +159,23 @@ namespace ld42 {
 
 			if(obstacles[2] != null) {
 				if (playerState != obstacles[2].stateToAvoid) {
+
+					gameCanvas.Children.Remove(playerImage);
+					playerImage = new Image();
+					playerImage.Width = 150;
+					playerImage.Height = 150;
 					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerFall.gif", UriKind.Relative)));
+					ImageBehavior.SetRepeatBehavior(playerImage, new System.Windows.Media.Animation.RepeatBehavior(1));
+					gameCanvas.Children.Add(playerImage);
+					Canvas.SetLeft(playerImage, 0);
+					Canvas.SetTop(playerImage, 50);
+					Canvas.SetZIndex(playerImage, 5);
+
 					Sound.Fall();
 					timer.Stop();
 					Timer gameoverTimer = new Timer() {
 						AutoReset = false,
-						Interval = 500,
+						Interval = 1100,
 						Enabled = false,
 					};
 					gameoverTimer.Elapsed += (a, b) => {
@@ -209,26 +220,43 @@ namespace ld42 {
 		private void Window_KeyDown(object sender, KeyEventArgs e) {
 			if (timer.Enabled) {
 				if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
-					Sound.Slash();
-					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerSlash.gif", UriKind.Relative)));
-					playerState = PlayerState.Slash;
+					if (playerState != PlayerState.Slash) { 
+						Sound.Slash();
+						ChangePlayerImage(@"Resources\img\playerSlash.gif");
+						playerState = PlayerState.Slash;
+					}
 					stateRemaing = 50 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.W || e.Key == Key.Up) /*&& playerState != PlayerState.Jump*/) {
-					if(playerState != PlayerState.Jump)
+					if (playerState != PlayerState.Jump) {
 						Sound.Jump();
-					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerJump.gif", UriKind.Relative)));
-					playerState = PlayerState.Jump;
+						ChangePlayerImage(@"Resources\img\playerJump.gif");
+						playerState = PlayerState.Jump;
+					}
 					stateRemaing = 150 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.S || e.Key == Key.Down) /*&& playerState != PlayerState.Roll*/) {
-					if(playerState != PlayerState.Roll)
+					if (playerState != PlayerState.Roll) {
 						Sound.Roll();
-					ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(@"Resources\img\playerRoll.gif", UriKind.Relative)));
-					playerState = PlayerState.Roll;
+						ChangePlayerImage(@"Resources\img\playerRoll.gif");
+						playerState = PlayerState.Roll;
+					}
 					stateRemaing = 150 / speedArr[speedArrIndex];
 				}
 			}
+		}
+
+		void ChangePlayerImage(string path) {
+			gameCanvas.Children.Remove(playerImage);
+			playerImage = new Image {
+				Width = 150,
+				Height = 150
+			};
+			ImageBehavior.SetAnimatedSource(playerImage, new BitmapImage(new Uri(path, UriKind.Relative)));
+			gameCanvas.Children.Add(playerImage);
+			Canvas.SetLeft(playerImage, 0);
+			Canvas.SetTop(playerImage, 50);
+			Canvas.SetZIndex(playerImage, 5);
 		}
 
 		private void WindowClosed(object sender, EventArgs e) {

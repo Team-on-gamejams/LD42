@@ -10,7 +10,7 @@ Run as long as you can
 
 
 #### HOW TO PLAY 
- * *Space* - attack
+ * *Spacebar* - attack
  * *W* - jump
  * *S* - roll
 
@@ -24,6 +24,7 @@ https://ldjam.com/events/ludum-dare/42/$100574
 #### TOOLS USED
  * Visual Studio 2017
  * Photoshop CS2
+ * Aseprite
  * Paint
  * sfxr
 
