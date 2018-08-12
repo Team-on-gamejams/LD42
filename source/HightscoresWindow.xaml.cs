@@ -30,5 +30,10 @@ namespace ld42 {
 			Sound.Click();
 			WindowManager.ReopenWindow(this, MenuWindow.menuWindow);
 		}
+
+		private void Window_Activated(object sender, EventArgs e) {
+			nickPanel.Children.Clear();
+			scorePanel.Children.Clear();
+		}
 	}
 }

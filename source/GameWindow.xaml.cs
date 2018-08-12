@@ -23,7 +23,7 @@ namespace ld42 {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class GameWindow : Window {
-		Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
+		public Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
 
 		System.Timers.Timer timer;
 		byte speedArrIndex = 0;
@@ -96,7 +96,7 @@ namespace ld42 {
 					++tick;
 					if (tick % 10 == 0) {
 						++score;
-						if (tick % 2500 == 0 && speedArrIndex < speedArr.Length - 1)
+						if (tick % 5000 == 0 && speedArrIndex < speedArr.Length - 1)
 							++speedArrIndex;
 					}
 

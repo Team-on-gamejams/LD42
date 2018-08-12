@@ -16,7 +16,10 @@ using WpfAnimatedGif;
 
 namespace ld42 {
 	class ObstacleJump : BasicObstacle {
-		public ObstacleJump(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\blockDown.gif", PlayerState.Jump, canvas) {
+		public ObstacleJump(System.Windows.Controls.Canvas canvas) : base(
+			(new Random()).Next(0, 10) <= 7 ? @"Resources\img\blockDown.gif" : @"Resources\img\spikesDown.gif"
+			, PlayerState.Jump, canvas
+		) {
 			Canvas.SetTop(image, 63);
 		}
 	}

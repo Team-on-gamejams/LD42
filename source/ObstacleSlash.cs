@@ -16,8 +16,15 @@ using WpfAnimatedGif;
 
 namespace ld42 {
 	class ObstacleSlash : BasicObstacle {
-		public ObstacleSlash(System.Windows.Controls.Canvas canvas) : base(@"Resources\img\enemyShield.gif", PlayerState.Slash, canvas) {
+		static byte r = (byte) new Random().Next(0, 100);
 
+		public ObstacleSlash(System.Windows.Controls.Canvas canvas) : base(
+			r < 33 ? @"Resources\img\enemyShield.gif" :
+			r < 66 ? @"Resources\img\enemyShield2.gif" :
+			@"Resources\img\enemyShield3.gif",
+			PlayerState.Slash, canvas
+		) {
+			r = (byte)new Random().Next(0, 100);
 		}
 	}
 }
