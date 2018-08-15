@@ -180,7 +180,7 @@ namespace ld42 {
 					};
 					gameoverTimer.Elapsed += (a, b) => {
 						System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
-							WindowManager.ReopenWindow(this, MenuWindow.gameOverWindow);
+							WindowManager.ReopenWindow(this, MenuWindow.GameOverWindow);
 						});
 					};
 					gameoverTimer.Start();
@@ -217,7 +217,7 @@ namespace ld42 {
 				obstacles.Add(null);
 		}
 
-		private void Window_KeyDown(object sender, KeyEventArgs e) {
+		void Window_KeyDown(object sender, KeyEventArgs e) {
 			if (timer.Enabled) {
 				if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
 					if (playerState != PlayerState.Slash) { 
@@ -259,7 +259,7 @@ namespace ld42 {
 			Canvas.SetZIndex(playerImage, 5);
 		}
 
-		private void WindowClosed(object sender, EventArgs e) {
+		void WindowClosed(object sender, EventArgs e) {
 			WindowManager.CloseAll();
 		}
 	}

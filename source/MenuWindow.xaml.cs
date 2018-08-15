@@ -18,10 +18,19 @@ namespace ld42 {
 	/// Interaction logic for MenuWindow.xaml
 	/// </summary>
 	public partial class MenuWindow : Window {
-		static public MenuWindow menuWindow;
-		static public GameOverWindow gameOverWindow = new GameOverWindow();
-		static public GameWindow gameWindow;
-		static public HightscoresWindow hightscoresWindow = new HightscoresWindow();
+		public static MenuWindow menuWindow;
+		private static GameWindow gameWindow;
+		private static GameOverWindow gameOverWindow = new GameOverWindow();
+		private static Lazy<HightscoresWindow> hightscoresWindow = new Lazy<HightscoresWindow>();
+		private static Lazy<SettingsWindow> settingsWindow = new Lazy<SettingsWindow>();
+		private static Lazy<CreditsWindow> creditsWindow = new Lazy<CreditsWindow>();
+
+		public static GameWindow GameWindow => gameWindow;
+		public static GameOverWindow GameOverWindow => gameOverWindow;
+		public static HightscoresWindow HightscoresWindow => hightscoresWindow.Value;
+		public static SettingsWindow SettingsWindow => settingsWindow.Value;
+		public static CreditsWindow CreditsWindow => creditsWindow.Value;
+
 
 		public MenuWindow() {
 			InitializeComponent();
@@ -32,12 +41,22 @@ namespace ld42 {
 		public void Button_Play(object sender, RoutedEventArgs e) {
 			Sound.Click();
 			gameWindow = new GameWindow();
-			this.ReopenWindow(gameWindow);
+			this.ReopenWindow(GameWindow);
 		}
 
 		private void Button_Hightscores(object sender, RoutedEventArgs e) {
 			Sound.Click();
-			this.ReopenWindow(hightscoresWindow);
+			this.ReopenWindow(HightscoresWindow);
+		}
+
+		private void Button_Settings(object sender, RoutedEventArgs e) {
+			Sound.Click();
+			this.ReopenWindow(SettingsWindow);
+		}
+
+		private void Button_Credits(object sender, RoutedEventArgs e) {
+			Sound.Click();
+			this.ReopenWindow(CreditsWindow);
 		}
 
 		private void Button_Exit(object sender, RoutedEventArgs e) {
