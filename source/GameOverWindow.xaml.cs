@@ -40,11 +40,13 @@ namespace ld42 {
 		}
 
 		void SaveScore() {
-			System.IO.File.AppendAllText(@".\score", nick.Text + '|' + MenuWindow.gameWindow.score.ToString() + '\n');
+			System.IO.File.AppendAllText(@".\score", nick.Text + '|' + MenuWindow.GameWindow.score.ToString() + '\n');
+			System.IO.File.WriteAllText(@".\nickInfo", nick.Text);
 		}
 
 		private void Window_Activated(object sender, EventArgs e) {
-			this.ScoreText.Text = $"Score: {MenuWindow.gameWindow.score}";
+			this.ScoreText.Text = $"Score: {MenuWindow.GameWindow.score}";
+			this.nick.Text = System.IO.File.ReadAllText(@".\nickInfo");
 		}
 	}
 }
