@@ -26,8 +26,8 @@ namespace ld42 {
 		public Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
 
 		System.Timers.Timer timer;
-		byte speedArrIndex = 0;
-		byte[] speedArr = new byte[] { /*1, 2,*/ 5, 10, 25, 50 };
+		byte speedArrIndex = Settings.startingSpeedIndex;
+		byte[] speedArr = new byte[] { 1, 2, 5, 10, 25, 50 };
 		ulong tick = 0;
 		Image backgroundImage1;
 		Image backgroundImage2;
@@ -66,15 +66,9 @@ namespace ld42 {
 			Canvas.SetTop(playerImage, 50);
 			Canvas.SetZIndex(playerImage, 5);
 
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			obstacles.Add(null);
-			for(int i = 0; i < 12; ++i)
+			for (byte i = 0; i < Settings.safezone; ++i)
+				obstacles.Add(null);
+			for(byte i = 0; i < obstacles.Capacity - Settings.safezone; ++i)
 				AddRandomObstacle();
 
 			//}
