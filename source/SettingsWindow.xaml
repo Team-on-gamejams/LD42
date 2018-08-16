@@ -20,13 +20,16 @@
         <TextBlock Text="Settings:" Style="{StaticResource menuText}" DockPanel.Dock="Top"/>
         <Button    Content="Back" Click="Button_Back" DockPanel.Dock="Bottom" FontFamily="{StaticResource PixelFont}" FontSize="20" HorizontalAlignment="Right" Width="100"/>
 
-        <StackPanel Margin="0 30 0 0">
+        <StackPanel Margin="0 20 0 0">
             <TextBlock Width="220" x:Name="musicText" FontSize="20" FontFamily="{StaticResource PixelFont}" Text="Music volume 100%"/>
             <Slider    Width="220" x:Name="musicSlider" Thumb.DragDelta="musicSlider_DragDelta" Thumb.DragCompleted="musicSlider_DragCompleted"/>
             <TextBlock FontSize="10"/>
             
             <TextBlock Width="220" x:Name="soundText" FontSize="20" FontFamily="{StaticResource PixelFont}" Text="Sound volume 50%"/>
             <Slider    Width="220" x:Name="soundSlider" Thumb.DragDelta="soundSlider_DragDelta" Thumb.DragCompleted="soundSlider_DragCompleted"/>
+            <TextBlock FontSize="10"/>
+
+            <CheckBox  x:Name="checkBoxRepeatSound" IsEnabled="True" Checked="checkBoxRepeatSound_Checked" Unchecked="checkBoxRepeatSound_Checked" Width="220" FontSize="18" FontFamily="{StaticResource PixelFont}" Content="Repeat action sound" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock FontSize="10"/>
 
             <TextBlock Width="220" x:Name="safezoneText" FontSize="19" FontFamily="{StaticResource PixelFont}" Text="Starting safezone 8"/>

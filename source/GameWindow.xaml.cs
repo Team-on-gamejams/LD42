@@ -214,24 +214,27 @@ namespace ld42 {
 		void Window_KeyDown(object sender, KeyEventArgs e) {
 			if (timer.Enabled) {
 				if ((e.Key == Key.Space || e.Key == Key.D || e.Key == Key.Right) /*&& playerState != PlayerState.Slash*/) {
-					if (playerState != PlayerState.Slash) { 
+					if((playerState == PlayerState.Slash && Settings.repeatSound) || playerState != PlayerState.Slash)
 						Sound.Slash();
+					if (playerState != PlayerState.Slash) { 
 						ChangePlayerImage(@"Resources\img\playerSlash.gif");
 						playerState = PlayerState.Slash;
 					}
 					stateRemaing = 50 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.W || e.Key == Key.Up) /*&& playerState != PlayerState.Jump*/) {
-					if (playerState != PlayerState.Jump) {
+					if((playerState == PlayerState.Jump && Settings.repeatSound) || playerState != PlayerState.Jump)
 						Sound.Jump();
+					if (playerState != PlayerState.Jump) {
 						ChangePlayerImage(@"Resources\img\playerJump.gif");
 						playerState = PlayerState.Jump;
 					}
 					stateRemaing = 150 / speedArr[speedArrIndex];
 				}
 				else if ((e.Key == Key.S || e.Key == Key.Down) /*&& playerState != PlayerState.Roll*/) {
-					if (playerState != PlayerState.Roll) {
+					if((playerState == PlayerState.Roll && Settings.repeatSound) || playerState != PlayerState.Roll)
 						Sound.Roll();
+					if (playerState != PlayerState.Roll) {
 						ChangePlayerImage(@"Resources\img\playerRoll.gif");
 						playerState = PlayerState.Roll;
 					}

@@ -8,6 +8,7 @@ namespace ld42{
     static class Settings{
 		static public byte safezone = 8;
 		static public byte startingSpeedIndex = 2;
+		static public bool repeatSound = true;
 
 		static Settings() {
 			string[] lines = System.IO.File.ReadAllText(@".\settings").Split('|');
@@ -15,6 +16,8 @@ namespace ld42{
 				safezone = 8;
 			if (!byte.TryParse(lines[3], out startingSpeedIndex))
 				startingSpeedIndex = 2;
+			if (!bool.TryParse(lines[4], out repeatSound))
+				repeatSound = true;
 		}
 	}
 }

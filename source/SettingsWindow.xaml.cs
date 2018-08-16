@@ -33,6 +33,7 @@ namespace ld42
 			this.safezoneSlider.Value = Settings.safezone;
 			this.safezoneText.Text = $"Starting safezone {(byte)safezoneSlider.Value}";
 
+			checkBoxRepeatSound.IsChecked = Settings.repeatSound;
 
 			if (Settings.startingSpeedIndex == 0)
 				speedSlider.Value = 0;
@@ -138,6 +139,18 @@ namespace ld42
 			string text = "";
 			string[] lines = System.IO.File.ReadAllText(@".\settings").Split('|');
 			lines[3] = Settings.startingSpeedIndex.ToString();
+			for (byte i = 0; i < lines.Length; ++i)
+				text += lines[i] + '|';
+			text = text.Substring(0, text.Length - 1);
+			System.IO.File.WriteAllText(@".\settings", text);
+		}
+
+		private void checkBoxRepeatSound_Checked(object sender, RoutedEventArgs e) {
+			Settings.repeatSound = checkBoxRepeatSound.IsChecked.Value;
+
+			string text = "";
+			string[] lines = System.IO.File.ReadAllText(@".\settings").Split('|');
+			lines[4] = Settings.repeatSound.ToString();
 			for (byte i = 0; i < lines.Length; ++i)
 				text += lines[i] + '|';
 			text = text.Substring(0, text.Length - 1);
