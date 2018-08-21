@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ld42
-{
+namespace ld42{
     /// <summary>
     /// Interaction logic for CreditsWindow.xaml
     /// </summary>

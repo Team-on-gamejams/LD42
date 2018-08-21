@@ -23,8 +23,6 @@ namespace ld42 {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class GameWindow : Window {
-		public Random random = new Random(((int)(DateTime.Now.Ticks % int.MaxValue)));
-
 		System.Timers.Timer timer;
 		byte speedArrIndex = Settings.startingSpeedIndex;
 		byte[] speedArr = new byte[] { 1, 2, 5, 10, 25, 50 };
@@ -197,7 +195,7 @@ namespace ld42 {
 
 		void AddRandomObstacle() {
 			if (obstacles[obstacles.Count - 1] == null && obstacles[obstacles.Count - 2] == null) {
-				byte rand = (byte)random.Next(0, 100);
+				byte rand = (byte)Settings.random.Next(0, 100);
 				if (rand < 50)
 					obstacles.Add(null);
 				else if (rand < 66)

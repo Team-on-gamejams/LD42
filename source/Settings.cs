@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace ld42{
     static class Settings{
+		static public Random random;
 		static public byte safezone = 8;
 		static public byte startingSpeedIndex = 2;
 		static public bool repeatSound = true;
 
 		static Settings() {
+			random = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
+
 			string[] lines = System.IO.File.ReadAllText(@".\settings").Split('|');
 			if (!byte.TryParse(lines[2], out safezone))
 				safezone = 8;
