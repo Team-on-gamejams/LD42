@@ -10,7 +10,6 @@ S.P.A.C.E., inc. steal all SPACES from keyboards. They build SPACEship with more
 #### GOAL
 Run as long as you can
 
-
 #### HOW TO PLAY 
  * *Spacebar* - attack
  * *W* - jump
@@ -22,16 +21,14 @@ Run as long as you can
 #### LINK TO GAME ENTRY
 https://ldjam.com/events/ludum-dare/42/s-p-a-c-e-inc
 
-
 #### TOOLS USED
  * Visual Studio 2017
  * Photoshop CS2
  * Aseprite
  * Paint
  * sfxr
-
  
-#### ABOUT CODE
+#### Made with
  * C#, WPF
  * [WpfAnimatedGif](https://github.com/XamlAnimatedGif/WpfAnimatedGif)
  
